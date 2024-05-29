@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Yield Reborn</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #cccccc;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333;
+        }
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #e15453;
+        }
+        .navbar .menu {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar .menu li {
+            margin-left: 30px;
+        }
+        .navbar .menu a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .navbar .menu a:hover {
+            color: #e15453;
+        }
+        .navbar .status {
+            color: #999;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            background-color: #1f1f1f;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #e15453;
+        }
+        .card a {
+            color: #e15453;
+            text-decoration: none;
+        }
+        .card a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            padding: 10px 20px;
+            background-color: #1a1a1a;
+            text-align: center;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+        button {
+            background-color: #e15453;
+            border: 0;
+            display: flex;
+            padding: 10px;
+            cursor: pointer;
+            color: #fff;
+            font-size: medium;
+        }
+        button:hover {
+            background-color: #0d0d0d;
+        }
+        .IYRFE {
+            position: relative;
+            margin: 0 -40px;
+            left: 50%;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #1f1f1f;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .textbox {
+            width: 90%;
+            background-color: #333;
+            color: #ffffff;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            resize: none;
+        }
+        .clipboard-button {
+            margin-top: 10px;
+            background-color: #e15453;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #fff;
+            font-size: medium;
+            border-radius: 5px;
+            position: relative;
+            margin: 5px -39px;
+            left: 41%;
+        }
+        .clipboard-button:hover {
+            background-color: #0d0d0d;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">IYR</div>
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/credits.html">Credits</a></li>
+            <li><a href="https://github.com/fuckusfm/infiniteyield-reborn">Source</a></li>
+            <li><a href="https://discord.gg/bfYJcEwjt2">Discord</a></li>
+        </ul>
+        <div class="status">The best script</div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Infinite Yield Reborn (FE)</h2>
+            <p>Get Infinite Yield Reborn (FE) for free (supported with every executors that supports LuaU).</p>
+            <button class="IYRFE" onclick="showModal()">Get Script</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Infinite Yield Reborn (SS)</h2>
+            <p>Infinite Yield Reborn for Server Side</p>
+            <button class="IYRSS">Coming Soon!</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Infinite Yield Reborn (LightWeight)</h2>
+            <p>Infinite Yield Reborn FE but deprecated (100% support with executors with no UNC support)</p>
+            <button class="IYRLW">Coming Soon!</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Infinite Yield Reborn (Classic Look)</h2>
+            <p>Infinite yield reborn with classic look its prob gonna be discontinued on release</p>
+            <button class="IYRCL">Coming Soon!</button>
+        </div>
+    </div>
+    <div id="scriptModalFE" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Script</h2>
+            <textarea class="textbox" id="scriptText" readonly>loadstring(game:HttpGet("https://github.com/fuckusfm/infiniteyield-reborn/raw/master/source"))()</textarea>
+            <button class="clipboard-button" onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+    </div>
+    <div class="footer">
+        Infinite Yield Reborn 2024 (fb_real)
+    </div>
+    <script>
+        function showModal() {
+            document.getElementById('scriptModalFE').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('scriptModalFE').style.display = 'none';
+        }
+
+        function copyToClipboard() {
+            var copyText = document.getElementById("scriptText");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand("copy");
+        }
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById('scriptModalFE');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
