@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0d0d0d;
+    color: #cccccc;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e15453;
+}
+.navbar .menu {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.navbar .menu li {
+    margin-left: 30px;
+}
+.navbar .menu a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 1em;
+}
+.navbar .menu a:hover {
+    color: #e15453;
+}
+.navbar .status {
+    color: #999;
+}
+.container {
+    padding: 20px;
+}
+.card {
+    background-color: #1f1f1f;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+.card h2 {
+    margin-top: 0;
+    color: #e15453;
+}
+.card a {
+    color: #e15453;
+    text-decoration: none;
+}
+.card a:hover {
+    text-decoration: underline;
+}
+.footer {
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    text-align: center;
+    border-top: 1px solid #333;
+    color: #666;
+}
+button {
+    background-color: #e15453;
+    border: 0;
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: medium;
+}
+button:hover {
+    background-color: #0d0d0d;
+}
+.IYRFE, .IYRSS {
+    position: relative;
+    margin: 0 -40px;
+    left: 50%;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: #1f1f1f;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.textbox {
+    width: 90%;
+    background-color: #333;
+    color: #ffffff;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    resize: none;
+}
+.clipboard-button {
+    margin-top: 10px;
+    background-color: #e15453;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    font-size: medium;
+    border-radius: 5px;
+    position: relative;
+    margin: 5px -39px;
+    left: 41%;
+}
+.clipboard-button:hover {
+    background-color: #0d0d0d;
+}
+.ccard {
+    background-color: #1f1f1f;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+.ccard h2 {
+    margin-top: 0;
+    color: #e15453;
+    position: relative;
+    text-align: center;
+}
+.ccard a {
+    color: #e15453;
+    text-decoration: none;
+}
+.ccard p {
+    position: relative;
+    text-align: center;
+    text-wrap: normal;
+}
+.ccard a:hover {
+    text-decoration: underline;
+}
