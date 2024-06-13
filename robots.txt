@@ -3,5 +3,3 @@ Disallow: /
 
 User-agent: UptimeRobot/2.0
 Disallow: /
-
-Sitemap: https://www.infiniteyieldreborn.xyz/sitemap.xml
