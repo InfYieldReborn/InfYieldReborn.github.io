@@ -30,7 +30,7 @@
                 <div id="game-title" class="game-title"></div>
                 <div id="game-creator" class="game-creator"></div>
                 <div class="game-buttons">
-                    <button id="play-button" class="play-button"></button>
+                    <button id="play-button" class="play-button">Play</button>
                 </div>
             </div>
         </div>
@@ -99,15 +99,21 @@
                     }
                     const favoritesCountData = await favoritesCountResponse.json()
                     const favoritesCount = favoritesCountData.favoritesCount
-                    updatePage(gameDetails, favoritesCount);
+                    // 4th api call (i cant even spell 4th)
+                    const gameThumbnailApiUrl = `https://thumbnails.roblox.com/v1/games/multiget/thumbnails?universeIds=${universeId}&countPerUniverse=1&defaults=true&size=768x432&format=Png&isCircular=false`
+                    const gameThumbnailResponse = await fetch(proxyUrl + gameThumbnailApiUrl)
+                    if (!gameThumbnailResponse.ok) {
+                        throw new Error('Network response was not ok ' + gameThumbnailResponse.statusText);
+                    }
+                    const gameThumbnailData = await gameThumbnailResponse.json()
+                    const gameThumbnailDetails = gameThumbnailData.data[0].thumbnails[0].imageUrl
+                    updatePage(gameDetails, favoritesCount, gameThumbnailDetails);
                 }
                 
                 fetchData();
             }
             
-            function updatePage(data, favoritesCount) {
-                console.log(data)
-                console.log(favoritesCount)
+            function updatePage(data, favoritesCount, imageUrl) {
                 document.getElementById('game-title').innerText = data.name;
                 if (data.creator.type == "User") {
                     document.getElementById('game-creator').innerText = `By @${data.creator.name}`;
@@ -115,7 +121,7 @@
                     document.getElementById('game-creator').innerText = `By ${data.creator.name}`;
                 }
                 document.getElementById('game-description').innerText = data.description;
-                document.getElementById('game-image').src = `https://thumbnails.roblox.com/v1/games/multiget/thumbnails?universeIds=${data.id}&countPerUniverse=1&defaults=true&size=768x432&format=Png&isCircular=false`;
+                document.getElementById('game-image').src = imageUrl;
                 document.getElementById('play-button').onclick = function() {
                     window.location.href = `roblox://experiences/start?placeId=${data.rootPlaceId}`;
                 };
