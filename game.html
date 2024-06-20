@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="iy, inf yield, infinte yield, iyr, inf yield reborn, infinite yield reborn, roblox script, roblox, roblox hacks">
+    <title>IYR Game</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">IYR</div>
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/credits.html">Credits</a></li>
+            <li><a href="https://github.com/fuckusfm/infiniteyield-reborn">Source</a></li>
+            <li><a href="https://discord.gg/bfYJcEwjt2">Discord</a></li>
+        </ul>
+        <div class="status">The best script</div>
+    </div>
+    <div class="container">
+        <div class="game-header">
+            <img id="game-image" src="" alt="Game Image">
+            <div class="game-info">
+                <div id="game-title" class="game-title"></div>
+                <div id="game-creator" class="game-creator"></div>
+                <div class="game-buttons">
+                    <button id="play-button" class="play-button"></button>
+                </div>
+            </div>
+        </div>
+        <div id="game-description" class="game-description"></div>
+        <div class="game-stats">
+            <div class="game-stat">
+                Active
+                <span id="active"></span>
+            </div>
+            <div class="game-stat">
+                Favorites
+                <span id="favorites"></span>
+            </div>
+            <div class="game-stat">
+                Visits
+                <span id="visits"></span>
+            </div>
+            <div class="game-stat">
+                Created
+                <span id="created"></span>
+            </div>
+            <div class="game-stat">
+                Updated
+                <span id="updated"></span>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Infinite Yield Reborn 2024 (fb_real)
+    </div>
+    <script>
+        
+        window.onload = function () {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            
+            if (urlParams.get("placeId")) {
+                if (urlParams.get("gameInstanceId")) {
+                    window.location.replace(`roblox://experiences/start?placeId=${urlParams.get("placeId")}&gameInstanceId=${urlParams.get("gameInstanceId")}`);
+                }
+                
+                const gameid = Number(urlParams.get("placeId"));
+                
+                async function fetchData() {
+                    const proxyUrl = 'https://corsproxy.io/?';
+                    const universeApiUrl = `https://apis.roblox.com/universes/v1/places/${gameid}/universe`;
+                    const universeResponse = await fetch(proxyUrl + universeApiUrl);
+                    if (!universeResponse.ok) {
+                        throw new Error('Network response was not ok ' + universeResponse.statusText);
+                    }
+                    const universeData = await universeResponse.json();
+                    const universeId = universeData.universeId;
+                    // Second API call
+                    const gameApiUrl = `https://games.roblox.com/v1/games?universeIds=${universeId}`;
+                    const gameResponse = await fetch(proxyUrl + gameApiUrl);
+                    if (!gameResponse.ok) {
+                        throw new Error('Network response was not ok ' + gameResponse.statusText);
+                    }
+                    const gameData = await gameResponse.json();
+                    const gameDetails = gameData.data[0];
+                    // Third API call (am i there?)
+                    const favoritesCountApiUrl = `https://games.roblox.com/v1/games/${universeId}/favorites/count`
+                    const favoritesCountResponse = await fetch(proxyUrl + favoritesCountApiUrl)
+                    if (!favoritesCountResponse.ok) {
+                        throw new Error('Network response was not ok ' + favoritesCountResponse.statusText);
+                    }
+                    const favoritesCountData = await favoritesCountResponse.json()
+                    const favoritesCount = favoritesCountData.favoritesCount
+                    updatePage(gameDetails, favoritesCount);
+                }
+                
+                fetchData();
+            }
+            
+            function updatePage(data, favoritesCount) {
+                console.log(data)
+                console.log(favoritesCount)
+                document.getElementById('game-title').innerText = data.name;
+                if (data.creator.type == "User") {
+                    document.getElementById('game-creator').innerText = `By @${data.creator.name}`;
+                } else {
+                    document.getElementById('game-creator').innerText = `By ${data.creator.name}`;
+                }
+                document.getElementById('game-description').innerText = data.description;
+                document.getElementById('game-image').src = `https://thumbnails.roblox.com/v1/games/multiget/thumbnails?universeIds=${data.id}&countPerUniverse=1&defaults=true&size=768x432&format=Png&isCircular=false`;
+                document.getElementById('play-button').onclick = function() {
+                    window.location.href = `roblox://experiences/start?placeId=${data.rootPlaceId}`;
+                };
+                document.getElementById('active').innerText = data.playing;
+                document.getElementById('favorites').innerText = favoritesCount;
+                document.getElementById('visits').innerText = data.visits;
+                document.getElementById('created').innerText = new Date(data.created).toLocaleDateString();
+                document.getElementById('updated').innerText = new Date(data.updated).toLocaleDateString();
+            }
+        }
+    
+    </script>
+</body>
+</html>
