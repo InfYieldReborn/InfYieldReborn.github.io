@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="iy, inf yield, infinte yield, iyr, inf yield reborn, infinite yield reborn, roblox script, roblox, roblox hacks">
+        <title>IYR Discover</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+        <link rel="manifest" href="/images/site.webmanifest">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="discover.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="logo">IYR</div>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/credits">Credits</a></li>
+                <li><a href="/discover">Discover</a></li>
+                <li><a href="https://github.com/fuckusfm/infiniteyield-reborn">Source</a></li>
+                <li><a href="https://discord.gg/bfYJcEwjt2">Discord</a></li>
+            </ul>
+            <div class="status">The best script</div>
+        </div>
+        <div class="card">
+            <h2>WIP!</h2>
+            <p>This is still in works</p>
+        </div>
+        <div id="discover-page">
+            <h1>Pinned</h1>
+            <div id="top-carousel" class="carousel">
+            </div>
+            <h2>Top Trending</h2>
+            <div id="top-trending" class="game-list"></div>
+            <h2>Others</h2>
+            <div id="other-games" class="game-list"></div>
+        </div>
+    <div class="footer">
+        Infinite Yield Reborn 2024 (fb_real)
+    </div>
+    <script>
+        const proxyUrl = 'https://corsproxy.io/?';
+        const apiUrl = 'https://apis.roblox.com/explore-api/v1/get-sorts?sessionId=f';
+
+        async function fetchGameData() {
+            try {
+                const response = await fetch(proxyUrl + apiUrl);
+                const data = await response.json();
+                displayGames(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displayGames(data) {
+            const topTrending = document.getElementById('top-trending');
+            const upAndComing = document.getElementById('other-games');    
+
+            data.sorts.forEach(sort => {
+                if (sort.contentType === 'Games') {
+                    sort.games.forEach((game, index) => {
+                        const gameItem = document.createElement('div');
+                        gameItem.classList.add('game-item');       
+
+                        const gameTitle = document.createElement('h3');
+                        gameTitle.textContent = game.name;
+                        gameItem.appendChild(gameTitle);       
+
+                        const playerCount = document.createElement('p');
+                        playerCount.textContent = `Players: ${game.playerCount}`;
+                        gameItem.appendChild(playerCount);     
+
+                        const totalUpVotes = document.createElement('p');
+                        totalUpVotes.textContent = `Upvotes: ${game.totalUpVotes}`;
+                        gameItem.appendChild(totalUpVotes);    
+
+                        const hiddenPlaceId = document.createElement('span');
+                        hiddenPlaceId.classList.add('hidden');
+                        hiddenPlaceId.textContent = game.rootPlaceId;
+                        gameItem.appendChild(hiddenPlaceId);       
+
+                        gameItem.addEventListener('click', () => {
+                            window.location.href = `/game?placeId=${game.rootPlaceId}`;
+                        });    
+                 
+
+                        if (index < 10) {
+                            topTrending.appendChild(gameItem);
+                        } else {
+                            upAndComing.appendChild(gameItem);
+                        }
+                    });
+                }
+            });
+        }
+
+        async function topcarouseldisplay() {
+            const topCarousel = document.getElementById('top-carousel');
+            const response = await fetch(`/discoverpinned.json`);
+            const data = await response.json();
+
+            data.data.forEach(game => {
+                const gameItem = document.createElement('div');
+                gameItem.classList.add('game-item');      
+
+                const gameTitle = document.createElement('h3');
+                gameTitle.textContent = game.name;
+                gameItem.appendChild(gameTitle);      
+
+                const playerCount = document.createElement('p');
+                playerCount.textContent = `Players: ${game.playerCount}`;
+                gameItem.appendChild(playerCount);    
+
+                const totalUpVotes = document.createElement('p');
+                totalUpVotes.textContent = `Upvotes: ${game.totalUpVotes}`;
+                gameItem.appendChild(totalUpVotes);   
+
+                const hiddenPlaceId = document.createElement('span');
+                hiddenPlaceId.classList.add('hidden');
+                hiddenPlaceId.textContent = game.placeId;
+                gameItem.appendChild(hiddenPlaceId);      
+
+                gameItem.addEventListener('click', () => {
+                    window.location.href = `/game?placeId=${game.placeId}`;
+                }); 
+
+                topCarousel.appendChild(gameItem);
+            });
+        }
+
+        fetchGameData();
+        topcarouseldisplay();
+
+    </script>
+</body>
+</html>
