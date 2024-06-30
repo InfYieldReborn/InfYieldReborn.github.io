@@ -20,9 +20,9 @@ body {
     justify-content: space-between;
 }
 #game-image {
-    width: 100%; /* Adjust width as needed */
-    max-width: 550px; /* Set a maximum width */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; 
+    max-width: 550px; 
+    height: auto; 
 }
 .game-header img {
     width: 100%;
