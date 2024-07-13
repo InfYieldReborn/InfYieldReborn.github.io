@@ -10,46 +10,118 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #faq h2 {
+            text-align: center;
+        }
+        .faq-section {
+            background-color: #111;
+            border: 1px solid white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .faq-section h2 {
+            font-size: 32px;
+            margin-top: 0;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #444;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            border: 1px solid #444;
+            border-top: none;
+            background-color: #222;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">IYR</div>
-        <ul class="menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/credits">Credits</a></li>
-            <li><a href="/discover">Discover</a></li>
-            <li><a href="https://github.com/fuckusfm/infiniteyield-reborn">Source</a></li>
-            <li><a href="https://discord.gg/bfYJcEwjt2">Discord</a></li>
-        </ul>
-        <div class="status">The best script</div>
+    <div class="header">
+        <div class="header-text" onclick="window.location.href = '/'">IYR</div>
+        <div class="status">IYR > IY</div>
+        <img src="/images/Webp.png" alt="Decorative Element" class="menu-icon">
+    </div>
+    <div id="menu-bar">
+        <li><a href="/">Home</a></li>
+        <li><a href="/credits">Credits</a></li>
+        <li><a href="/discover">Discover</a></li>
+        <li><a href="https://github.com/fuckusfm/infiniteyield-reborn">Source</a></li>
+        <li><a href="https://discord.gg/bfYJcEwjt2">Discord</a></li>
+    </div>
+    <div class="main-section">
+        <div class="main-info">
+            <h1>Infinite Yield Reborn</h1>
+            <p>IY But more maintained with greatest amount of stupidity</p>
+            <button class="scroll-button" onclick="scrollToPanels(1)">Get the script</button>
+            <button class="scroll-button" onclick="scrollToPanels(2)">FAQ</button>
+        </div>
+        <div class="main-image">
+            <img src="/images/Rawc3OSdFt.png" alt="Decorative Element" id="image1">
+        </div>
     </div>
     <div class="container">
-        <div class="card">
-            <h2>Infinite Yield Reborn (FE)</h2>
+        <div class="panel" id="panel1">
+            <h2>IYR FE</h2>
             <p>Get Infinite Yield Reborn (FE) for free (supported with every executors that supports LuaU).</p>
-            <button class="IYRFE" onclick="showModal(1)">Get Script</button>
+            <button class="button" onclick="showModal(1)">Get Script</button>
         </div>
-    </div>
-    <div class="container">
-        <div class="card">
-            <h2>Infinite Yield Reborn (SS)</h2>
+        <div class="panel" id="panel2">
+            <h2>IYR SS</h2>
             <p>Infinite Yield Reborn for Server Side (THIS IS A REQUIRE SCRIPT NOT A LOADSTRING YOU NEED AN SS EXECUTOR)</p>
-            <button class="IYRSS" onclick="showModal(2)">Get Script</button>
+            <button class="button" onclick="showModal(2)">Get Require</button>
         </div>
     </div>
-    <div class="container">
-        <div class="card">
-            <h2>Infinite Yield Reborn (LightWeight)</h2>
-            <p>Infinite Yield Reborn FE but deprecated (100% support with executors with no UNC support)</p>
-            <button class="IYRLW">Coming Soon!</button>
+    <div></div>
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">What is IYR?</div>
+            <div class="faq-answer">
+                <p>IYR aka Infinite Yield Reborn is a fork of IY But better!</p>
+                <p>Just more maintained.</p>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="card">
-            <h2>Infinite Yield Reborn (Classic Look)</h2>
-            <p>Infinite yield reborn with classic look its prob gonna be discontinued on release</p>
-            <button class="IYRCL">Coming Soon!</button>
+        <div class="faq-item">
+            <div class="faq-question">How can I contribute to IYR?</div>
+            <div class="faq-answer">You can make a pull request in our github repo</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can i still call IYR as IY?</div>
+            <div class="faq-answer">Are you serious? (no)</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">;serverlist ;whatexploitsareonline and ;serverhop is not working. Why?</div>
+            <div class="faq-answer">Either the api is down or it takes a while to respond or we messed up the code</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Whats the difference between IY and IYR</div>
+            <div class="faq-answer">
+                <p>Well lets say that theres. A lot of features.</p>
+                <o>;serverlist ;infinity ;windowfocus ;antibang You name it</o>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Why isnt this on scriptblox?</div>
+            <div class="faq-answer">
+                <p>Some guy at scriptblox banned both FurryBoy (retired) and FB_Real</p>
+                <p>Because we uploaded the script with 1 more nsfw feature</p>
+                <p>I guess it's too much?</p>
+                <p>We did not got the exact reason. Well shame on scriptblox Boohoo</p>
+                <p>Our script is up on rscripts.net (someone reuploaded) though</p>
+            </div>
         </div>
     </div>
     <div id="scriptModalFE" class="modal">
@@ -71,6 +143,7 @@
     <div class="footer">
         Infinite Yield Reborn 2024 (fb_real)
     </div>
+    <script src="script.js"></script>
     <script>
         var modal
         var scriptbox

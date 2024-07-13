@@ -3,7 +3,50 @@ body {
     font-family: Arial, sans-serif;
     background-color: rgb(25, 25, 25);
     color: white;
-    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+.main-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: left;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-section h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.main-section p {
+    font-size: 24px;
+    margin: 10px 0 20px 0;
+}
+
+.main-image {
+    padding-right: 5%;
+}
+
+#image1 {
+    width: 300px;
+    max-width: 500px;
+}
+
+.main-info {
+    padding-left: 5%;
+}
+
+.scroll-button {
+    background-color: rgb(45, 45, 45);
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .container {
@@ -46,7 +89,8 @@ body {
     background-color: #333;
     padding: 10px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    list-style-type: none;
 }
 
 #menu-bar ul {
@@ -86,6 +130,10 @@ body {
     -webkit-text-stroke: 1% #000;
 }
 
+#panel1 {
+    background-color: rgb(45, 45, 45);
+}
+
 .button {
     background-color: rgb(45, 45, 45);
     border: 1px solid white;
@@ -105,8 +153,7 @@ body {
 
 .decorative-element {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    max-width: 140px;
 }
 
 .decorative-element.top-left {
@@ -131,6 +178,7 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
+    z-index: 11;
 }
 .modal-content {
     background-color: #1f1f1f;
@@ -140,6 +188,7 @@ body {
     width: 80%;
     max-width: 600px;
     text-align: center;
+    z-index: 11;
 }
 .close {
     color: #aaaaaa;

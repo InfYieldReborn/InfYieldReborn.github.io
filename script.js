@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const panel1 = document.getElementById('img1planel');
-    const panel2 = document.getElementById('img2planel');
     const menuIcon = document.querySelector('.menu-icon');
     const menuBar = document.getElementById('menu-bar');
+
+    document.getElementById('image1').style.transform = 'rotateX(-20deg) rotateY(20deg)'
 
     menuIcon.addEventListener('click', function() {
         if (menuBar.style.display === 'none' || menuBar.style.display === '') {
@@ -12,26 +12,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    function rotatePanel(panel, angleX, angleY) {
-        panel.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-    }
-
-    document.addEventListener('mousemove', function(event) {
-        const centerX = window.innerWidth / 20;
-        const centerY = window.innerHeight / 20;
-        const centerX2 = window.innerWidth - 20;
-        const centerY2 = window.innerHeight - 550;
-
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
-
-        const rotateX1 = (mouseY - centerY) / 10;
-        const rotateY1 = (centerX - mouseX) / 15;
-
-        const rotateX2 = (mouseY - centerY2) / 15;
-        const rotateY2 = (centerX2 - mouseX) / 15;
-
-        rotatePanel(panel1, rotateX1, rotateY1);
-        rotatePanel(panel2, rotateX2, rotateY2);
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', () => {
+            const answer = item.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        });
     });
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        document.querySelector('.main-image').style.display = 'none';
+    };
 });
+
+function scrollToPanels(n) {
+    if (n == 1) {
+        document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+    }
+    if (n == 2) {
+        document.querySelector('.faq-section').scrollIntoView({ behavior: 'smooth' });
+    }
+}

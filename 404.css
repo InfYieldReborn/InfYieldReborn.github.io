@@ -1,0 +1,30 @@
+.fourofour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fourofour p {
+    position: absolute;
+    text-shadow: 
+    2px 0 0 black, 
+    0 2px 0 black, 
+    -2px 0 0 black, 
+    0 -2px 0 black; 
+    font: Arial;
+    font-size: xx-large;
+    padding-top: 100px;
+}
+.fourofour h {
+    position: absolute;
+    text-shadow: 
+    2px 0 0 black, 
+    0 2px 0 black, 
+    -2px 0 0 black, 
+    0 -2px 0 black; 
+    font: Arial;
+    font-size: 100px;
+    justify-self: center;
+}
+.fourofour img {
+    max-width: 800px;
+}
