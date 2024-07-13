@@ -50,5 +50,19 @@
     <div class="footer">
         Infinite Yield Reborn 2024 (fb_real)
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const menuBar = document.getElementById('menu-bar');
+
+            menuIcon.addEventListener('click', function() {
+                if (menuBar.style.display === 'none' || menuBar.style.display === '') {
+                    menuBar.style.display = 'flex';
+                } else {
+                    menuBar.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
